@@ -1,0 +1,69 @@
+\hypertarget{history_8c}{}\section{src/history.c File Reference}
+\label{history_8c}\index{src/history.\+c@{src/history.\+c}}
+
+
+Contains history functions.  
+
+
+{\ttfamily \#include \char`\"{}history.\+h\char`\"{}}\newline
+Include dependency graph for history.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{history_8c_a275801fd695440c3c3420af9508a6f96}{save\+Command} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Saves a command. \end{DoxyCompactList}\item 
+void \hyperlink{history_8c_ac51ed3863a291e7293bea4c111ac8f9c}{close\+Log} ()
+\begin{DoxyCompactList}\small\item\em Closes the log file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{history_8c_a25c8761bc1f523fe6a53db546ae83add}\label{history_8c_a25c8761bc1f523fe6a53db546ae83add}} 
+char $\ast$ {\bfseries file\+Name}
+\item 
+\mbox{\Hypertarget{history_8c_a3efb0e1a16208deecbd84c15401f7cf8}\label{history_8c_a3efb0e1a16208deecbd84c15401f7cf8}} 
+F\+I\+LE $\ast$ {\bfseries f} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{history_8c_aa3c9949c90b8bd39f0a8e028c5e22304}\label{history_8c_aa3c9949c90b8bd39f0a8e028c5e22304}} 
+int {\bfseries log\+File\+Opened} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains history functions. 
+
+Contains history functions for command logging purposes. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{history_8c_ac51ed3863a291e7293bea4c111ac8f9c}\label{history_8c_ac51ed3863a291e7293bea4c111ac8f9c}} 
+\index{history.\+c@{history.\+c}!close\+Log@{close\+Log}}
+\index{close\+Log@{close\+Log}!history.\+c@{history.\+c}}
+\subsubsection{\texorpdfstring{close\+Log()}{closeLog()}}
+{\footnotesize\ttfamily void close\+Log (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the log file. 
+
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Closes the log file if the pointer is not null. \mbox{\Hypertarget{history_8c_a275801fd695440c3c3420af9508a6f96}\label{history_8c_a275801fd695440c3c3420af9508a6f96}} 
+\index{history.\+c@{history.\+c}!save\+Command@{save\+Command}}
+\index{save\+Command@{save\+Command}!history.\+c@{history.\+c}}
+\subsubsection{\texorpdfstring{save\+Command()}{saveCommand()}}
+{\footnotesize\ttfamily void save\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Saves a command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & being saved char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Saves a given command into a log file. Once created the file stays open until the program is terminated. 

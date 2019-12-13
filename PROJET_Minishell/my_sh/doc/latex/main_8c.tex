@@ -1,0 +1,309 @@
+\hypertarget{main_8c}{}\section{src/main.c File Reference}
+\label{main_8c}\index{src/main.\+c@{src/main.\+c}}
+
+
+my\+\_\+sh \hyperlink{main_8c}{main.\+c}  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Include dependency graph for main.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8c_a91a3bbcc7eb26e8695255b2795d6e46f}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Starts the main application with arguments. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_ab5bdcb90e76f36bc8bff45bd937c36a7}{console} ()
+\begin{DoxyCompactList}\small\item\em Prompts the user for a command then executes it. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a81e1be274560fe16458cec6974b3e8b9}{pipe\+Split} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Prompts the user for a command then executes it. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a92d7837b02495600182bb05807e4bfc2}{start\+Process} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Parses the command and fork before executing the chain of conditionals commands. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a07c06892aafb5e69eacc9fb538d939c7}{super\+Parse} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Splits the command by \char`\"{}\&\&\char`\"{} and feeds it into the conditional structure. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a2f850b285bb6dab056e81fc6b7b0f13c}{exec\+Command} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Tries to execute a commands as built in, otherwise sends it to the system function. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{main_8c_acd758a0ed7c0c21b8148a94cb4cf7d2c}{exec\+Redirection} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Redirects the stdout or stdin according to the command then return the part to execute. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a7b2d17f2323813b4d07b416dac864607}{exec\+Specific\+Built\+In} (int status)
+\begin{DoxyCompactList}\small\item\em Once a command has been executed some built in need the main process to do some operations. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_aaaf09a0107fb252cad9ae1e4b79a2d2e}{run\+Root} ()
+\begin{DoxyCompactList}\small\item\em Run the conditional commands accordingly. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a519bcfafab223c80305d981293e68976}{run\+Level} (\hyperlink{structCommand}{Command} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Runs recursively levels. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_a7ebc1d50f11344904f5740c1850cf563}{run\+Chain} (\hyperlink{structCommand}{Command} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Runs OR commands until one succeeds. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_a6df26079137d3e0416a4a25b7710ddd7}{print\+Level} (\hyperlink{structCommand}{Command} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Prints levels recursively. \end{DoxyCompactList}\item 
+void \hyperlink{main_8c_abd8f79015a05355a1de0d482dd5e3f68}{print\+Chain} (\hyperlink{structCommand}{Command} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Prints a chain recursively. \end{DoxyCompactList}\item 
+int \hyperlink{main_8c_ab73a7c9eccbf4a4f99b3c29277047555}{execute\+Cmd} (\hyperlink{structCommand}{Command} $\ast$cmd)
+\begin{DoxyCompactList}\small\item\em Split and execute a command with its parameters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{main_8c_a684534c7b8518560805bba0afde262a1}\label{main_8c_a684534c7b8518560805bba0afde262a1}} 
+int {\bfseries last\+Status} = 0
+\item 
+\mbox{\Hypertarget{main_8c_ab0edb4101572ba0d568687c0f728a16b}\label{main_8c_ab0edb4101572ba0d568687c0f728a16b}} 
+int {\bfseries transfer\+File\+Desc} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_aeecd289a8251e1b14807c400b2beea41}\label{main_8c_aeecd289a8251e1b14807c400b2beea41}} 
+int {\bfseries exit\+File\+Desc} = N\+U\+LL
+\item 
+\mbox{\Hypertarget{main_8c_aa857cdd126cfe287f9f43779ec092c6b}\label{main_8c_aa857cdd126cfe287f9f43779ec092c6b}} 
+int {\bfseries cd\+File\+Desc} = N\+U\+LL
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+my\+\_\+sh \hyperlink{main_8c}{main.\+c} 
+
+This c file is the core of my\+\_\+sh from here all commands are entered, parsed and executed. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_ab5bdcb90e76f36bc8bff45bd937c36a7}\label{main_8c_ab5bdcb90e76f36bc8bff45bd937c36a7}} 
+\index{main.\+c@{main.\+c}!console@{console}}
+\index{console@{console}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{console()}{console()}}
+{\footnotesize\ttfamily int console (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prompts the user for a command then executes it. 
+
+\begin{DoxyReturn}{Returns}
+Return code of last command int.
+\end{DoxyReturn}
+Uses the function getchar(); to build a char pointer of dynamic size. There is no limit to a command thanks to the realoc. Once a command has been submited it\textquotesingle{}s sent to the \hyperlink{main_8c_a81e1be274560fe16458cec6974b3e8b9}{pipe\+Split(char$\ast$)} function. \mbox{\Hypertarget{main_8c_a2f850b285bb6dab056e81fc6b7b0f13c}\label{main_8c_a2f850b285bb6dab056e81fc6b7b0f13c}} 
+\index{main.\+c@{main.\+c}!exec\+Command@{exec\+Command}}
+\index{exec\+Command@{exec\+Command}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{exec\+Command()}{execCommand()}}
+{\footnotesize\ttfamily int exec\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Tries to execute a commands as built in, otherwise sends it to the system function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer to execute char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return code of the command int.
+\end{DoxyReturn}
+First of all the command is trimed to remove unnecessary trailing and leading spaces. Then the command is sent to the \hyperlink{main_8c_acd758a0ed7c0c21b8148a94cb4cf7d2c}{exec\+Redirection(char $\ast$)} function to setup the std\textquotesingle{}s for redirection. After that a condition checks for the need to send this process in the background for \char`\"{}\&\char`\"{} background executions. The command is then split by spaces to compare it with built in expressions. Some built in write informations in specific pipes to return specific actions to run in the main process. If the command hasn\textquotesingle{}t been processed yet it is sent to syst \mbox{\Hypertarget{main_8c_acd758a0ed7c0c21b8148a94cb4cf7d2c}\label{main_8c_acd758a0ed7c0c21b8148a94cb4cf7d2c}} 
+\index{main.\+c@{main.\+c}!exec\+Redirection@{exec\+Redirection}}
+\index{exec\+Redirection@{exec\+Redirection}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{exec\+Redirection()}{execRedirection()}}
+{\footnotesize\ttfamily char$\ast$ exec\+Redirection (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Redirects the stdout or stdin according to the command then return the part to execute. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer to parse char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Part to execute char $\ast$.
+\end{DoxyReturn}
+This function support $>$, $>$$>$, $<$ and $<$$<$ operators and redirects the stdin and out accordingly. The returned command is the remaining part to be executed in this configuration. This function is exclusively called by a child process of the main one. \mbox{\Hypertarget{main_8c_a7b2d17f2323813b4d07b416dac864607}\label{main_8c_a7b2d17f2323813b4d07b416dac864607}} 
+\index{main.\+c@{main.\+c}!exec\+Specific\+Built\+In@{exec\+Specific\+Built\+In}}
+\index{exec\+Specific\+Built\+In@{exec\+Specific\+Built\+In}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{exec\+Specific\+Built\+In()}{execSpecificBuiltIn()}}
+{\footnotesize\ttfamily int exec\+Specific\+Built\+In (\begin{DoxyParamCaption}\item[{int}]{status }\end{DoxyParamCaption})}
+
+
+
+Once a command has been executed some built in need the main process to do some operations. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Current} & return status int. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New return status int.
+\end{DoxyReturn}
+In the case of the CD built in command, the initial directory change occurs in the child process. But the change must be also applied to the parent process. To do this a pipe is created where the child sends a request for the parent to change it\textquotesingle{}s directory. Here the content of the pipe is interpreted and the working directory of the main process is altered. But wait, the CD request might need previous context cd changes to be valid, so each time a CD command is processed in the child the pipe is fed the CD request. In this function all the CD requests are applied in the order the child did it to sync with him. In the case of the exit buit in command it\textquotesingle{}s pretty similar (but far simpler), a specific pipe is parsed to listen for an exit command, if a request is in the pipe the main process will terminate here with an exit code of 0. \mbox{\Hypertarget{main_8c_ab73a7c9eccbf4a4f99b3c29277047555}\label{main_8c_ab73a7c9eccbf4a4f99b3c29277047555}} 
+\index{main.\+c@{main.\+c}!execute\+Cmd@{execute\+Cmd}}
+\index{execute\+Cmd@{execute\+Cmd}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{execute\+Cmd()}{executeCmd()}}
+{\footnotesize\ttfamily int execute\+Cmd (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{cmd }\end{DoxyParamCaption})}
+
+
+
+Split and execute a command with its parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer Command$\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Execution success status int.
+\end{DoxyReturn}
+Splits the command and its parameters into a char$\ast$ array, then pass it to execvp in a child process to execute it. Return 1 if execution succeeds, 0 otherwise. \mbox{\Hypertarget{main_8c_a91a3bbcc7eb26e8695255b2795d6e46f}\label{main_8c_a91a3bbcc7eb26e8695255b2795d6e46f}} 
+\index{main.\+c@{main.\+c}!main@{main}}
+\index{main@{main}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily void main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Starts the main application with arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Argument} & array size int argc. \\
+\hline
+{\em Argument} & array char $\ast$argv\mbox{[}\mbox{]}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Starts the main application with arguments. Standard main declaration. \mbox{\Hypertarget{main_8c_a81e1be274560fe16458cec6974b3e8b9}\label{main_8c_a81e1be274560fe16458cec6974b3e8b9}} 
+\index{main.\+c@{main.\+c}!pipe\+Split@{pipe\+Split}}
+\index{pipe\+Split@{pipe\+Split}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{pipe\+Split()}{pipeSplit()}}
+{\footnotesize\ttfamily int pipe\+Split (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Prompts the user for a command then executes it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Raw} & command pointer char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return code of the command int.
+\end{DoxyReturn}
+Splits the raw command by the pipe \char`\"{}$\vert$\char`\"{} symbol, each of the sub commands will run in a different subprocess. This function splits the string with \hyperlink{tools_8c_a0a1bbe9f84776fd2bcb23ca819bb8664}{str\+Super\+Split(char $\ast$,char $\ast$,int)} to avoid splitting double pipes \char`\"{}$\vert$$\vert$\char`\"{}. After all the piped commands are executed the last stdout output is printed to the console from it\textquotesingle{}s file descriptor. The function \hyperlink{main_8c_a7b2d17f2323813b4d07b416dac864607}{exec\+Specific\+Built\+In(int)} is finally executed to execute specific built in commands that need to be run in the main process. \mbox{\Hypertarget{main_8c_abd8f79015a05355a1de0d482dd5e3f68}\label{main_8c_abd8f79015a05355a1de0d482dd5e3f68}} 
+\index{main.\+c@{main.\+c}!print\+Chain@{print\+Chain}}
+\index{print\+Chain@{print\+Chain}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{print\+Chain()}{printChain()}}
+{\footnotesize\ttfamily void print\+Chain (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Prints a chain recursively. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer Command$\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Will go recursively through all commands of a chain and print them. Only used for debugging purposes. \mbox{\Hypertarget{main_8c_a6df26079137d3e0416a4a25b7710ddd7}\label{main_8c_a6df26079137d3e0416a4a25b7710ddd7}} 
+\index{main.\+c@{main.\+c}!print\+Level@{print\+Level}}
+\index{print\+Level@{print\+Level}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{print\+Level()}{printLevel()}}
+{\footnotesize\ttfamily void print\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Prints levels recursively. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer Command$\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Will go recursively through all level and print their chains. Only used for debugging purposes. \mbox{\Hypertarget{main_8c_a7ebc1d50f11344904f5740c1850cf563}\label{main_8c_a7ebc1d50f11344904f5740c1850cf563}} 
+\index{main.\+c@{main.\+c}!run\+Chain@{run\+Chain}}
+\index{run\+Chain@{run\+Chain}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{run\+Chain()}{runChain()}}
+{\footnotesize\ttfamily int run\+Chain (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Runs OR commands until one succeeds. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer Command$\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Chain succes status int.
+\end{DoxyReturn}
+Will go recursively through all command of the OR chain until one suceeds. If a command succeeds 1 is returned, otherwise if none, 0 is returned. \mbox{\Hypertarget{main_8c_a519bcfafab223c80305d981293e68976}\label{main_8c_a519bcfafab223c80305d981293e68976}} 
+\index{main.\+c@{main.\+c}!run\+Level@{run\+Level}}
+\index{run\+Level@{run\+Level}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{run\+Level()}{runLevel()}}
+{\footnotesize\ttfamily void run\+Level (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Runs recursively levels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer Command$\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Will go recursively through all levels but will stop if the return value of the chain execution is 0. This is done to insure that at least one of the OR commands is executed, otherwise it stops. \mbox{\Hypertarget{main_8c_aaaf09a0107fb252cad9ae1e4b79a2d2e}\label{main_8c_aaaf09a0107fb252cad9ae1e4b79a2d2e}} 
+\index{main.\+c@{main.\+c}!run\+Root@{run\+Root}}
+\index{run\+Root@{run\+Root}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{run\+Root()}{runRoot()}}
+{\footnotesize\ttfamily int run\+Root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the conditional commands accordingly. 
+
+\begin{DoxyReturn}{Returns}
+Return code of the last command executed int.
+\end{DoxyReturn}
+This function is the entry point of the recursive execution of all the conditional commands, the returned value is the last status code of the last command executed. \mbox{\Hypertarget{main_8c_a92d7837b02495600182bb05807e4bfc2}\label{main_8c_a92d7837b02495600182bb05807e4bfc2}} 
+\index{main.\+c@{main.\+c}!start\+Process@{start\+Process}}
+\index{start\+Process@{start\+Process}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{start\+Process()}{startProcess()}}
+{\footnotesize\ttfamily int start\+Process (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Parses the command and fork before executing the chain of conditionals commands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Sub-\/command} & pointer char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return code of the command int.
+\end{DoxyReturn}
+First of all the command is sent to the \hyperlink{main_8c_a07c06892aafb5e69eacc9fb538d939c7}{super\+Parse(char $\ast$)} function to create the structure of conditional commands. Then the main process forks to create a sub-\/process where the conditinal commands will be executed in order. The main process will then enter a wait() function to wait for the child process to finsih. \mbox{\Hypertarget{main_8c_a07c06892aafb5e69eacc9fb538d939c7}\label{main_8c_a07c06892aafb5e69eacc9fb538d939c7}} 
+\index{main.\+c@{main.\+c}!super\+Parse@{super\+Parse}}
+\index{super\+Parse@{super\+Parse}!main.\+c@{main.\+c}}
+\subsubsection{\texorpdfstring{super\+Parse()}{superParse()}}
+{\footnotesize\ttfamily void super\+Parse (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Splits the command by \char`\"{}\&\&\char`\"{} and feeds it into the conditional structure. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & pointer to be split char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+The root of the curent structure is first freed. Then the command is split using \hyperlink{tools_8c_a0a1bbe9f84776fd2bcb23ca819bb8664}{str\+Super\+Split(char $\ast$,char $\ast$,int)} to avoid a malformed triple \char`\"{}\&\char`\"{}. Finally the tokens are injected in reverse order in the structure using the \hyperlink{struct_8c_abc8e5f0a85a3fb6a6104ccd692305adb}{add\+Root\+Command(char $\ast$)} function. 

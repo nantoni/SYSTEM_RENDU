@@ -1,0 +1,202 @@
+\hypertarget{tools_8c}{}\section{src/tools.c File Reference}
+\label{tools_8c}\index{src/tools.\+c@{src/tools.\+c}}
+
+
+\hyperlink{tools_8c}{tools.\+c}, tool functions for the main.  
+
+
+{\ttfamily \#include \char`\"{}tools.\+h\char`\"{}}\newline
+Include dependency graph for tools.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{tools_8c_a82d513375c46071aac07c90b378ce4d4}{concat} (const char $\ast$str1, const char $\ast$str2)
+\begin{DoxyCompactList}\small\item\em Tool function to concatenate two char pointers. \end{DoxyCompactList}\item 
+char $\ast$$\ast$ \hyperlink{tools_8c_a6a4ce5d7645b2d0da2fbe0a45af7dfeb}{str\+\_\+split} (char $\ast$a\+\_\+str, const char a\+\_\+delim, int $\ast$length)
+\begin{DoxyCompactList}\small\item\em Splits a char pointer by a delimiter. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{tools_8c_abb6900633ceba44f8bb290653b34093a}{multi\+\_\+tok} (char $\ast$input, char $\ast$delimiter)
+\begin{DoxyCompactList}\small\item\em Splits a char pointer by a multi character delimiter. \end{DoxyCompactList}\item 
+\hyperlink{structListTag}{List} $\ast$ \hyperlink{tools_8c_a0a1bbe9f84776fd2bcb23ca819bb8664}{str\+Super\+Split} (char $\ast$input, char $\ast$delimiter, int option)
+\begin{DoxyCompactList}\small\item\em Splits a char pointer by a defined delimiter, will return a List of strings. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{tools_8c_a25beca0452f72d2deebd0a18b20db816}{replace\+Single\+Char} (char $\ast$input, char target, char replacer)
+\begin{DoxyCompactList}\small\item\em Replaces a specific charcter in a char pointer. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{tools_8c_a205c8acb2ef70f038f32e5fe361cc8d9}{trimwhitespace} (char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Remove leading and trailing spaces. \end{DoxyCompactList}\item 
+int \hyperlink{tools_8c_abacf65751574aaf4a2ebf71a47cbaf43}{redirect} (char $\ast$filename, int flags, int destfd)
+\begin{DoxyCompactList}\small\item\em Redirects a std to or from a file. \end{DoxyCompactList}\item 
+void \hyperlink{tools_8c_a73a8d7e98be85f67961ca682c291033a}{sleep\+\_\+ms} (int milliseconds)
+\begin{DoxyCompactList}\small\item\em Cross platform sleep function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{tools_8c}{tools.\+c}, tool functions for the main. 
+
+This c file provides the \hyperlink{main_8c}{main.\+c} with usefull char pointer tools to split or concatenate for example. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tools_8c_a82d513375c46071aac07c90b378ce4d4}\label{tools_8c_a82d513375c46071aac07c90b378ce4d4}} 
+\index{tools.\+c@{tools.\+c}!concat@{concat}}
+\index{concat@{concat}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{concat()}{concat()}}
+{\footnotesize\ttfamily char$\ast$ concat (\begin{DoxyParamCaption}\item[{const char $\ast$}]{str1,  }\item[{const char $\ast$}]{str2 }\end{DoxyParamCaption})}
+
+
+
+Tool function to concatenate two char pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & first char $\ast$ str1. \\
+\hline
+{\em The} & second char $\ast$ str2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A char pointer made of the two parameters concatenated char $\ast$.
+\end{DoxyReturn}
+It concatenates two char pointers and returns a new one made of the two parameters. \mbox{\Hypertarget{tools_8c_abb6900633ceba44f8bb290653b34093a}\label{tools_8c_abb6900633ceba44f8bb290653b34093a}} 
+\index{tools.\+c@{tools.\+c}!multi\+\_\+tok@{multi\+\_\+tok}}
+\index{multi\+\_\+tok@{multi\+\_\+tok}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{multi\+\_\+tok()}{multi\_tok()}}
+{\footnotesize\ttfamily char$\ast$ multi\+\_\+tok (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{char $\ast$}]{delimiter }\end{DoxyParamCaption})}
+
+
+
+Splits a char pointer by a multi character delimiter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Char} & pointer to split char $\ast$ input. \\
+\hline
+{\em Delimiter} & pointer char $\ast$ delimiter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Token char pointer.
+\end{DoxyReturn}
+Is used to split by a multi character delimiter. \mbox{\Hypertarget{tools_8c_abacf65751574aaf4a2ebf71a47cbaf43}\label{tools_8c_abacf65751574aaf4a2ebf71a47cbaf43}} 
+\index{tools.\+c@{tools.\+c}!redirect@{redirect}}
+\index{redirect@{redirect}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{redirect()}{redirect()}}
+{\footnotesize\ttfamily int redirect (\begin{DoxyParamCaption}\item[{char $\ast$}]{filename,  }\item[{int}]{flags,  }\item[{int}]{destfd }\end{DoxyParamCaption})}
+
+
+
+Redirects a std to or from a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Char} & pointer of the file name char $\ast$ filename. \\
+\hline
+{\em Flags} & for the file opening int flags. \\
+\hline
+{\em Std} & code to redirect int destfd. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+File descriptor of the opened file.
+\end{DoxyReturn}
+This function redirects a std to or from a file. It is usefull for flux redirection. The returned integer is the file descriptor of the opened file. \mbox{\Hypertarget{tools_8c_a25beca0452f72d2deebd0a18b20db816}\label{tools_8c_a25beca0452f72d2deebd0a18b20db816}} 
+\index{tools.\+c@{tools.\+c}!replace\+Single\+Char@{replace\+Single\+Char}}
+\index{replace\+Single\+Char@{replace\+Single\+Char}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{replace\+Single\+Char()}{replaceSingleChar()}}
+{\footnotesize\ttfamily char$\ast$ replace\+Single\+Char (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{char}]{target,  }\item[{char}]{replacer }\end{DoxyParamCaption})}
+
+
+
+Replaces a specific charcter in a char pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Char} & pointer to process char $\ast$ input. \\
+\hline
+{\em Char} & to change char target. \\
+\hline
+{\em Char} & to replace char replacer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The same pointer but with the target changed to the replacer char $\ast$.
+\end{DoxyReturn}
+This function allow for strict charcter change. That means that if the target is \char`\"{}\#\char`\"{} and the parser encounters \char`\"{}\#\#\char`\"{} the charcters will be ignored. The returned pointer is the same as the input but with the character replaced. \mbox{\Hypertarget{tools_8c_a73a8d7e98be85f67961ca682c291033a}\label{tools_8c_a73a8d7e98be85f67961ca682c291033a}} 
+\index{tools.\+c@{tools.\+c}!sleep\+\_\+ms@{sleep\+\_\+ms}}
+\index{sleep\+\_\+ms@{sleep\+\_\+ms}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{sleep\+\_\+ms()}{sleep\_ms()}}
+{\footnotesize\ttfamily void sleep\+\_\+ms (\begin{DoxyParamCaption}\item[{int}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Cross platform sleep function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Time} & in miliseconds to wait int milliseconds. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+This function will make the current thread sleep for a given amount of miliseconds. \mbox{\Hypertarget{tools_8c_a6a4ce5d7645b2d0da2fbe0a45af7dfeb}\label{tools_8c_a6a4ce5d7645b2d0da2fbe0a45af7dfeb}} 
+\index{tools.\+c@{tools.\+c}!str\+\_\+split@{str\+\_\+split}}
+\index{str\+\_\+split@{str\+\_\+split}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{str\+\_\+split()}{str\_split()}}
+{\footnotesize\ttfamily char$\ast$$\ast$ str\+\_\+split (\begin{DoxyParamCaption}\item[{char $\ast$}]{a\+\_\+str,  }\item[{const char}]{a\+\_\+delim,  }\item[{int $\ast$}]{length }\end{DoxyParamCaption})}
+
+
+
+Splits a char pointer by a delimiter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Char} & pointer to split char $\ast$ a\+\_\+str. \\
+\hline
+{\em Delimiter} & char a\+\_\+delim. \\
+\hline
+{\em Length} & of the original char pointer int $\ast$ length. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char double pointer.
+\end{DoxyReturn}
+Is used to split by a simple character. \mbox{\Hypertarget{tools_8c_a0a1bbe9f84776fd2bcb23ca819bb8664}\label{tools_8c_a0a1bbe9f84776fd2bcb23ca819bb8664}} 
+\index{tools.\+c@{tools.\+c}!str\+Super\+Split@{str\+Super\+Split}}
+\index{str\+Super\+Split@{str\+Super\+Split}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{str\+Super\+Split()}{strSuperSplit()}}
+{\footnotesize\ttfamily \hyperlink{structListTag}{List}$\ast$ str\+Super\+Split (\begin{DoxyParamCaption}\item[{char $\ast$}]{input,  }\item[{char $\ast$}]{delimiter,  }\item[{int}]{option }\end{DoxyParamCaption})}
+
+
+
+Splits a char pointer by a defined delimiter, will return a List of strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Char} & pointer to split char $\ast$ input. \\
+\hline
+{\em Delimiter} & pointer char $\ast$ delimiter. \\
+\hline
+{\em Option} & for the parser int. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String list from the linkedstring library List $\ast$.
+\end{DoxyReturn}
+This function allows for strict match split. This means that for example if the delimiter is \char`\"{}\&\char`\"{} and it encounters \char`\"{}\&\&\char`\"{} the split won\textquotesingle{}t be done. An other thing is that this function return directly a linked list of strings, simplifying the usual token management. \mbox{\Hypertarget{tools_8c_a205c8acb2ef70f038f32e5fe361cc8d9}\label{tools_8c_a205c8acb2ef70f038f32e5fe361cc8d9}} 
+\index{tools.\+c@{tools.\+c}!trimwhitespace@{trimwhitespace}}
+\index{trimwhitespace@{trimwhitespace}!tools.\+c@{tools.\+c}}
+\subsubsection{\texorpdfstring{trimwhitespace()}{trimwhitespace()}}
+{\footnotesize\ttfamily char$\ast$ trimwhitespace (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+
+Remove leading and trailing spaces. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Input} & pointer char $\ast$ str. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char pointer without leading and trailing spaces char $\ast$.
+\end{DoxyReturn}
+This function remove both leading and trailing white spaces. The spaces between word inside the pointer are kept. 

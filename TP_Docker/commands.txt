@@ -1,0 +1,12 @@
+
+I.
+docker pull jenkins
+docker run -p 8080:8080 --rm -d --name test jenkins
+docker ps 
+docker stop test
+
+II.
+sudo docker build -f Dockerfile -t tomcat_jenkins .
+sudo docker run -it -p 8080:8080 tomcat_jenkins
+firefox -new-tab "localhost:8080"
+firefox -new-tab "localhost:8080/jenkins"

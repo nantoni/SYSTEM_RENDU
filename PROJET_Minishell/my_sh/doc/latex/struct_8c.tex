@@ -1,0 +1,134 @@
+\hypertarget{struct_8c}{}\section{src/struct.c File Reference}
+\label{struct_8c}\index{src/struct.\+c@{src/struct.\+c}}
+
+
+Contains functions to parse and store conditional commands.  
+
+
+{\ttfamily \#include \char`\"{}struct.\+h\char`\"{}}\newline
+Include dependency graph for struct.\+c\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{struct_8c_abc8e5f0a85a3fb6a6104ccd692305adb}{add\+Root\+Command} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Adds \char`\"{}$\vert$$\vert$\char`\"{} separated commands as the new root. \end{DoxyCompactList}\item 
+\hyperlink{structCommand}{Command} $\ast$ \hyperlink{struct_8c_a775038a7b0c3958e3600f40d11ffd1f1}{process\+Command} (char $\ast$command)
+\begin{DoxyCompactList}\small\item\em Processes a chain of OR commands and builds the new root from them. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{struct_8c_af167409ed74c615a55893c11f7f51495}{quick\+Concat} (char $\ast$a, char $\ast$b)
+\begin{DoxyCompactList}\small\item\em Tool function to concatenate two char pointers. \end{DoxyCompactList}\item 
+void \hyperlink{struct_8c_a42aafc91433976e1493785b970102da9}{free\+Command} (\hyperlink{structCommand}{Command} $\ast$command)
+\begin{DoxyCompactList}\small\item\em Frees recursively a \hyperlink{structCommand}{Command} type pointer. \end{DoxyCompactList}\item 
+void \hyperlink{struct_8c_aff08373f9888a58834ac13faaf9114b4}{free\+Root} ()
+\begin{DoxyCompactList}\small\item\em Frees the current root command of Bug\+Bash. \end{DoxyCompactList}\item 
+\hyperlink{structCommand}{Command} $\ast$ \hyperlink{struct_8c_a547cce25c112be96b9f9075ab713f7c5}{get\+Root\+Command} ()
+\begin{DoxyCompactList}\small\item\em Get the current root. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains functions to parse and store conditional commands. 
+
+This files contains function to create structures from text commands. The parsing is done recursively and \hyperlink{main_8c}{main.\+c} has access to the root command to execute in order. This file also contains a method to free the structure once it is not needed anymore. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{struct_8c_abc8e5f0a85a3fb6a6104ccd692305adb}\label{struct_8c_abc8e5f0a85a3fb6a6104ccd692305adb}} 
+\index{struct.\+c@{struct.\+c}!add\+Root\+Command@{add\+Root\+Command}}
+\index{add\+Root\+Command@{add\+Root\+Command}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{add\+Root\+Command()}{addRootCommand()}}
+{\footnotesize\ttfamily void add\+Root\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Adds \char`\"{}$\vert$$\vert$\char`\"{} separated commands as the new root. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Commands} & separated by OR symbols char$\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Once this chain of OR commands is parsed we replace the root of the conditional commands. Then the old root is set as the next command in the new root. The IF command chains are fed in reverse in this function to build the structure. \mbox{\Hypertarget{struct_8c_a42aafc91433976e1493785b970102da9}\label{struct_8c_a42aafc91433976e1493785b970102da9}} 
+\index{struct.\+c@{struct.\+c}!free\+Command@{free\+Command}}
+\index{free\+Command@{free\+Command}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{free\+Command()}{freeCommand()}}
+{\footnotesize\ttfamily void free\+Command (\begin{DoxyParamCaption}\item[{\hyperlink{structCommand}{Command} $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Frees recursively a \hyperlink{structCommand}{Command} type pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{structCommand}{Command}} & to free recursively \hyperlink{structCommand}{Command} $\ast$. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+It frees a \hyperlink{structCommand}{Command} type pointer and it\textquotesingle{}s ramifications recursively to free some memory. \mbox{\Hypertarget{struct_8c_aff08373f9888a58834ac13faaf9114b4}\label{struct_8c_aff08373f9888a58834ac13faaf9114b4}} 
+\index{struct.\+c@{struct.\+c}!free\+Root@{free\+Root}}
+\index{free\+Root@{free\+Root}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{free\+Root()}{freeRoot()}}
+{\footnotesize\ttfamily void free\+Root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Frees the current root command of Bug\+Bash. 
+
+\begin{DoxyReturn}{Returns}
+Void.
+\end{DoxyReturn}
+Frees the current root command of Bug\+Bash recursively if the pointer is not null. \mbox{\Hypertarget{struct_8c_a547cce25c112be96b9f9075ab713f7c5}\label{struct_8c_a547cce25c112be96b9f9075ab713f7c5}} 
+\index{struct.\+c@{struct.\+c}!get\+Root\+Command@{get\+Root\+Command}}
+\index{get\+Root\+Command@{get\+Root\+Command}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{get\+Root\+Command()}{getRootCommand()}}
+{\footnotesize\ttfamily \hyperlink{structCommand}{Command}$\ast$ get\+Root\+Command (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the current root. 
+
+\begin{DoxyReturn}{Returns}
+\hyperlink{structCommand}{Command} pointer of the current root \hyperlink{structCommand}{Command} $\ast$.
+\end{DoxyReturn}
+Will return the current root command of Bug\+Bash. \mbox{\Hypertarget{struct_8c_a775038a7b0c3958e3600f40d11ffd1f1}\label{struct_8c_a775038a7b0c3958e3600f40d11ffd1f1}} 
+\index{struct.\+c@{struct.\+c}!process\+Command@{process\+Command}}
+\index{process\+Command@{process\+Command}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{process\+Command()}{processCommand()}}
+{\footnotesize\ttfamily \hyperlink{structCommand}{Command}$\ast$ process\+Command (\begin{DoxyParamCaption}\item[{char $\ast$}]{command }\end{DoxyParamCaption})}
+
+
+
+Processes a chain of OR commands and builds the new root from them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & chain of commands char $\ast$ command. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new root is returned \hyperlink{structCommand}{Command} pointer.
+\end{DoxyReturn}
+This function takes a chain of OR commands, splits them and builds the new root from the first command. The function then takes the remaining part of the chain (The other OR commands) and build the chain by calling itself. The new root command is then returned. \mbox{\Hypertarget{struct_8c_af167409ed74c615a55893c11f7f51495}\label{struct_8c_af167409ed74c615a55893c11f7f51495}} 
+\index{struct.\+c@{struct.\+c}!quick\+Concat@{quick\+Concat}}
+\index{quick\+Concat@{quick\+Concat}!struct.\+c@{struct.\+c}}
+\subsubsection{\texorpdfstring{quick\+Concat()}{quickConcat()}}
+{\footnotesize\ttfamily char$\ast$ quick\+Concat (\begin{DoxyParamCaption}\item[{char $\ast$}]{a,  }\item[{char $\ast$}]{b }\end{DoxyParamCaption})}
+
+
+
+Tool function to concatenate two char pointers. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & first char $\ast$ a. \\
+\hline
+{\em The} & second char $\ast$ b. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A char pointer made of the two parameters concatenated char $\ast$.
+\end{DoxyReturn}
+It concatenates two char pointers and returns a new one made of the two parameters. 
